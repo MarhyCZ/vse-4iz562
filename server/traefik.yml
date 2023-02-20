@@ -14,5 +14,6 @@ entryPoints:
     address: ":443"
     http:
       tls: true
-    forwardedHeaders:
-      insecure: true
+# Assuming that front Traefik is correctly signed
+#    forwardedHeaders:
+#      insecure: true
