@@ -10,10 +10,7 @@ api:
   insecure: true
   
 entryPoints:
-  web:
-    address: ":80"
-    forwardedHeaders:
-      insecure: true
-
   websecure:
     address: ":443"
+    forwardedHeaders:
+      insecure: true

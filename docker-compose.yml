@@ -15,7 +15,7 @@ services:
       - "8888:8888"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.jupyter.rule=Host(`jupyter.vm.mb.marstad.cz`)"	
+      - "traefik.http.routers.jupyter.rule=Host(`jupyter.vm.mb.marstad.cz`)"
 
   db-server:
     container_name: mysql
