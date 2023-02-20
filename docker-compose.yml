@@ -11,11 +11,14 @@ services:
       - notebooks:/home/jovyan/notebooks"
     security_opt:
       - label=disable
+    networks:
+      - traefik
     ports:
       - "8888:8888"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jupyter.rule=Host(`jupyter.vm.mb.marstad.cz`)"
+      - "traefik.http.routers.jupyter.tls=true"
 
   db-server:
     container_name: mysql
@@ -31,9 +34,15 @@ services:
       MYSQL_DATABASE: 4iz562
     volumes:
       - mysql-data:/var/lib/mysql/"
+    networks:
+      - traefik
     ports:
       - "3308:3306"
 
 volumes:
   mysql-data:
   notebooks:
+
+networks:
+  traefik:
+    external: true

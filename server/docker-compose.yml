@@ -5,6 +5,8 @@ services:
     image: traefik
     environment:
       TZ: Europe/Prague
+    networks:
+      - traefik
     ports:
       # The HTTP port
       - "443:443"
@@ -14,3 +16,7 @@ services:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yml:/etc/traefik/traefik.yml
+
+networks:
+  traefik:
+    external: true
