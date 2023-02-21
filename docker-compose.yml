@@ -8,7 +8,7 @@ services:
       context: .
     restart: always
     volumes:
-      - notebooks:/home/jovyan/notebooks"
+      - notebooks:/home/jovyan/notebooks
     security_opt:
       - label=disable
     networks:
@@ -32,11 +32,16 @@ services:
       MYSQL_PASSWORD: student
       MYSQL_DATABASE: 4iz562
     volumes:
-      - mysql-data:/var/lib/mysql/"
+      - mysql-data:/var/lib/mysql/
     networks:
       - traefik
     ports:
-      - "3308:3306"
+      - "3306:3306"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.sql.rule=HostSNI(`mysql.vm.mb.marstad.cz`)"
+      - "traefik.tcp.routers.sql.tls=true"
+      - "traefik.tcp.services.sql.loadbalancer.server.port=3306"
 
 volumes:
   mysql-data:

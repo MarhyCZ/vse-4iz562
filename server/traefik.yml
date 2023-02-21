@@ -13,7 +13,8 @@ entryPoints:
   websecure:
     address: ":443"
     http:
-      tls: true
+      tls: {}
+
 # Assuming that front Traefik is correctly signed
 #    forwardedHeaders:
 #      insecure: true
