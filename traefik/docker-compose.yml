@@ -7,6 +7,7 @@ services:
       TZ: Europe/Prague
     networks:
       - traefik
+    restart: always
     ports:
       # The HTTP port
       - "443:443"
