@@ -2,6 +2,7 @@ version: "3.7"
 services:
 
   traefik:
+    container_name: traefik
     image: traefik
     environment:
       TZ: Europe/Prague
